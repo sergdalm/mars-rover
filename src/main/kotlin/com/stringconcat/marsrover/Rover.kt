@@ -6,7 +6,7 @@ class Rover(
 
 ) {
     fun turnLeft() {
-        TODO("Not yet implemented")
+        direction = direction.left()
     }
 
     fun move() {
@@ -14,7 +14,7 @@ class Rover(
     }
 
     fun turnRight() {
-        TODO("Not yet implemented")
+        direction =  direction.right()
     }
 
     fun direction(): Direction {
