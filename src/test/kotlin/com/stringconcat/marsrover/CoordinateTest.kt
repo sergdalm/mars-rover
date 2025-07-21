@@ -2,7 +2,6 @@ package com.stringconcat.marsrover
 
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.junit.jupiter.api.Assertions.*
 import kotlin.test.Test
 
 class CoordinateTest {
@@ -22,5 +21,30 @@ class CoordinateTest {
     @Test
     fun `increment y`() {
         Coordinate(0, 0).incY() shouldBe Coordinate(0, 1)
+    }
+
+    @Test
+    fun `increment x`() {
+        Coordinate(0, 0).incX() shouldBe Coordinate(1, 0)
+    }
+
+    @Test
+    fun `decrease y`() {
+        Coordinate(1, 1).decrY() shouldBe Coordinate(1, 0)
+    }
+
+    @Test
+    fun `decrease x`() {
+        Coordinate(1, 1).decrX() shouldBe Coordinate(0, 1)
+    }
+
+    @Test
+    fun `decrease 0 x - x should remain 0`() {
+        Coordinate(0, 0).decrX() shouldBe Coordinate(0, 0)
+    }
+
+    @Test
+    fun `decrease 0 y - y should remain 0`() {
+        Coordinate(0, 0).decrY() shouldBe Coordinate(0, 0)
     }
 }

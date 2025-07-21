@@ -10,11 +10,16 @@ class Rover(
     }
 
     fun move() {
-        coordinates = coordinates.incY()
+        coordinates = when (direction) {
+            Direction.EAST -> coordinates.incX()
+            Direction.SOUTH -> coordinates.decrY()
+            Direction.WEST -> coordinates.decrX()
+            Direction.NORTH -> coordinates.incY()
+        }
     }
 
     fun turnRight() {
-        direction =  direction.right()
+        direction = direction.right()
     }
 
     fun direction(): Direction {

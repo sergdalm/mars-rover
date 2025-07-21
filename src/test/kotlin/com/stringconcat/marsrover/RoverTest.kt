@@ -23,11 +23,57 @@ class RoverTest {
     }
 
     @Test
+    fun `east faced rover moves - increase x`() {
+        val rover = Rover(Coordinate(0, 0), Direction.EAST)
+        rover.move()
+
+        rover.coordinates shouldBe Coordinate(1, 0)
+        rover.direction shouldBe Direction.EAST
+    }
+
+    @Test
+    fun `south faced rover moves - decrease y`() {
+        val rover = Rover(Coordinate(1, 1), Direction.SOUTH)
+        rover.move()
+
+        rover.coordinates shouldBe Coordinate(1, 0)
+        rover.direction shouldBe Direction.SOUTH
+    }
+
+    @Test
+    fun `west faced rover moves - decrease x`() {
+        val rover = Rover(Coordinate(1, 1), Direction.WEST)
+        rover.move()
+
+        rover.coordinates shouldBe Coordinate(0, 1)
+        rover.direction shouldBe Direction.WEST
+    }
+
+
+    @Test
+    fun `x edge faced rover moves - coordinate does not change`() {
+        val rover = Rover(Coordinate(0, 0), Direction.WEST)
+        rover.move()
+
+        rover.coordinates shouldBe Coordinate(0, 0)
+        rover.direction shouldBe Direction.WEST
+    }
+
+    @Test
+    fun `y edge faced rover moves - coordinate does not change`() {
+        val rover = Rover(Coordinate(0, 0), Direction.SOUTH)
+        rover.move()
+
+        rover.coordinates shouldBe Coordinate(0, 0)
+        rover.direction shouldBe Direction.SOUTH
+    }
+
+    @Test
     fun `rover turns right from north - direction should be east`() {
         val rover = Rover(Coordinate(0, 0), Direction.NORTH)
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.EAST
     }
 
@@ -37,7 +83,7 @@ class RoverTest {
         rover.turnRight()
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.SOUTH
     }
 
@@ -46,7 +92,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.NORTH)
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.WEST
     }
 
@@ -56,7 +102,7 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.SOUTH
     }
 
@@ -68,10 +114,9 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.NORTH
     }
-
 
 
     @Test
@@ -79,7 +124,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.EAST)
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.SOUTH
     }
 
@@ -89,7 +134,7 @@ class RoverTest {
         rover.turnRight()
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.WEST
     }
 
@@ -98,7 +143,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.EAST)
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.NORTH
     }
 
@@ -108,7 +153,7 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.WEST
     }
 
@@ -120,7 +165,7 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.EAST
     }
 
@@ -129,7 +174,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.SOUTH)
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.WEST
     }
 
@@ -139,7 +184,7 @@ class RoverTest {
         rover.turnRight()
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.NORTH
     }
 
@@ -148,7 +193,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.SOUTH)
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.EAST
     }
 
@@ -158,7 +203,7 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.NORTH
     }
 
@@ -170,10 +215,9 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.SOUTH
     }
-
 
 
     @Test
@@ -181,7 +225,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.WEST)
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.NORTH
     }
 
@@ -191,7 +235,7 @@ class RoverTest {
         rover.turnRight()
         rover.turnRight()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.EAST
     }
 
@@ -200,7 +244,7 @@ class RoverTest {
         val rover = Rover(Coordinate(0, 0), Direction.WEST)
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.SOUTH
     }
 
@@ -210,7 +254,7 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.EAST
     }
 
@@ -222,7 +266,7 @@ class RoverTest {
         rover.turnLeft()
         rover.turnLeft()
 
-        rover.coordinates shouldBe  Coordinate(0, 0)
+        rover.coordinates shouldBe Coordinate(0, 0)
         rover.direction shouldBe Direction.WEST
     }
 }
