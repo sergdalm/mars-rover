@@ -29,7 +29,9 @@ internal class PlateauTest {
         val plateau = Plateau(3, 1)
         val rover = Rover(Coordinate(x = 0, y = 0), Direction.NORTH)
         plateau.land(rover)
-        plateau.canRoverMove() shouldBe false
+
+        val peekNextCoordinate = rover.peekNextCoordinate()
+        plateau.isInside(peekNextCoordinate) shouldBe false
     }
 
     @Test
@@ -37,7 +39,9 @@ internal class PlateauTest {
         val plateau = Plateau(1, 3)
         val rover = Rover(Coordinate(x = 0, y = 0), Direction.EAST)
         plateau.land(rover)
-        plateau.canRoverMove() shouldBe false
+
+        val peekNextCoordinate = rover.peekNextCoordinate()
+        plateau.isInside(peekNextCoordinate) shouldBe false
     }
 
     @Test
@@ -45,6 +49,8 @@ internal class PlateauTest {
         val plateau = Plateau(5, 5)
         val rover = Rover(Coordinate(x = 0, y = 0), Direction.NORTH)
         plateau.land(rover)
-        plateau.canRoverMove() shouldBe true
+
+        val peekNextCoordinate = rover.peekNextCoordinate()
+        plateau.isInside(peekNextCoordinate) shouldBe true
     }
 }

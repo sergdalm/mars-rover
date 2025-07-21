@@ -10,20 +10,19 @@ class Rover(
     }
 
     fun move() {
-        coordinates = when (direction) {
-            Direction.EAST -> coordinates.incX()
-            Direction.SOUTH -> coordinates.decrY()
-            Direction.WEST -> coordinates.decrX()
-            Direction.NORTH -> coordinates.incY()
-        }
+        coordinates = peekNextCoordinate()
     }
 
     fun turnRight() {
         direction = direction.right()
     }
 
-    fun direction(): Direction {
-        TODO("Not yet implemented")
+    fun peekNextCoordinate(): Coordinate {
+        return when (direction) {
+            Direction.EAST -> coordinates.incX()
+            Direction.SOUTH -> coordinates.decrY()
+            Direction.WEST -> coordinates.decrX()
+            Direction.NORTH -> coordinates.incY()
+        }
     }
-
 }
