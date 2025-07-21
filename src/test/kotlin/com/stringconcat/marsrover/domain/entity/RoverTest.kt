@@ -1,4 +1,4 @@
-package com.stringconcat.marsrover
+package com.stringconcat.marsrover.domain.entity
 
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test

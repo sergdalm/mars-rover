@@ -1,4 +1,4 @@
-package com.stringconcat.marsrover
+package com.stringconcat.marsrover.domain.entity
 
 data class Coordinate(
     val x: Int,

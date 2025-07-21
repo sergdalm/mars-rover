@@ -1,4 +1,4 @@
-package com.stringconcat.marsrover
+package com.stringconcat.marsrover.domain.entity
 
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -14,8 +14,8 @@ class CoordinateTest {
 
     @Test
     fun `not the same coordinates are NOT equal`() {
-        Coordinate(0, 0) shouldNotBe  Coordinate(0, 5)
-        Coordinate(5, 1) shouldNotBe  Coordinate(6, 1)
+        Coordinate(0, 0) shouldNotBe Coordinate(0, 5)
+        Coordinate(5, 1) shouldNotBe Coordinate(6, 1)
     }
 
     @Test

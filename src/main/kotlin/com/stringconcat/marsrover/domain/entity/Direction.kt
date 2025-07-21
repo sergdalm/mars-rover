@@ -1,4 +1,4 @@
-package com.stringconcat.marsrover
+package com.stringconcat.marsrover.domain.entity
 
 enum class Direction {
     NORTH, WEST, SOUTH, EAST;

@@ -1,4 +1,4 @@
-package com.stringconcat.marsrover
+package com.stringconcat.marsrover.domain.entity
 
 class Rover(
     var coordinates: Coordinate,
