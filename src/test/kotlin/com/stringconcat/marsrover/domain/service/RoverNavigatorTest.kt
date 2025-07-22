@@ -4,7 +4,7 @@ import com.stringconcat.marsrover.domain.entity.Coordinate
 import com.stringconcat.marsrover.domain.entity.Direction
 import com.stringconcat.marsrover.domain.entity.Plateau
 import com.stringconcat.marsrover.domain.entity.Rover
-import com.stringconcat.marsrover.domain.error.RoversExplodedException
+import com.stringconcat.marsrover.domain.error.LandingCollisionException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
@@ -73,7 +73,7 @@ internal class RoverNavigatorTest {
         plateau.land(rover1)
         val rover2 = Rover(Coordinate(x = 0, y = 0), Direction.WEST)
 
-        val exception = shouldThrow<RoversExplodedException> {
+        val exception = shouldThrow<LandingCollisionException> {
             plateau.land(rover2)
         }
         exception.message should startWith(
