@@ -21,7 +21,7 @@ class Plateau(val width: Int, val height: Int) {
     }
 
     fun isInside(coord: Coordinate): Boolean {
-        return coord.x in 0 until width && coord.y in 0 until height
+        return coord.x in 0 .. width && coord.y in 0 .. height
     }
 
     fun isAreaOccupied(coord: Coordinate): Boolean {

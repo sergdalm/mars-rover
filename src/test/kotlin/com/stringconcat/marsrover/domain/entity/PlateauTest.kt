@@ -26,7 +26,7 @@ internal class PlateauTest {
 
     @Test
     fun `rover is on north edge - check if rover can move on plateau - no`() {
-        val plateau = Plateau(3, 1)
+        val plateau = Plateau(2, 0)
         val rover = Rover(Coordinate(x = 0, y = 0), Direction.NORTH)
         plateau.land(rover)
 
@@ -35,8 +35,8 @@ internal class PlateauTest {
     }
 
     @Test
-    fun `rover is on north east - check if rover can move on plateau - no`() {
-        val plateau = Plateau(1, 3)
+    fun `rover is on east edge - check if rover can move on plateau - no`() {
+        val plateau = Plateau(0, 2)
         val rover = Rover(Coordinate(x = 0, y = 0), Direction.EAST)
         plateau.land(rover)
 

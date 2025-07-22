@@ -26,7 +26,7 @@ internal class RoverNavigatorTest {
 
     @Test
     fun `land rover on plateau edge - rover try to move - rover coordinates dose not change`() {
-        val plateau = Plateau(3, 1)
+        val plateau = Plateau(2, 0)
         val rover = Rover(Coordinate(x = 0, y = 0), Direction.NORTH)
         val roverNavigator = plateau.land(rover)
         roverNavigator.moveRover()
@@ -80,5 +80,42 @@ internal class RoverNavigatorTest {
             "Two rovers collided and exploded at coordinate Coordinate(x=0, y=0). " +
                     "Landing on an occupied area is not allowed"
         )
+    }
+
+    @Test
+    fun `two rovers land and move - get current coordinates and directions`() {
+        val plateau = Plateau(5, 5)
+        val rover1 = Rover(Coordinate(x = 1, y = 2), Direction.NORTH)
+        val rover1Navigator = plateau.land(rover1)
+
+        rover1Navigator.turnRoverLeft()
+        rover1Navigator.moveRover()
+        rover1Navigator.turnRoverLeft()
+        rover1Navigator.moveRover()
+        rover1Navigator.turnRoverLeft()
+        rover1Navigator.moveRover()
+        rover1Navigator.turnRoverLeft()
+        rover1Navigator.moveRover()
+        rover1Navigator.moveRover()
+
+        val rover2 = Rover(Coordinate(x = 3, y = 3), Direction.EAST)
+        val rover2Navigator = plateau.land(rover2)
+
+        rover2Navigator.moveRover()
+        rover2Navigator.moveRover()
+        rover2Navigator.turnRoverRight()
+        rover2Navigator.moveRover()
+        rover2Navigator.moveRover()
+        rover2Navigator.turnRoverRight()
+        rover2Navigator.moveRover()
+        rover2Navigator.turnRoverRight()
+        rover2Navigator.turnRoverRight()
+        rover2Navigator.moveRover()
+
+        rover1.coordinates shouldBe Coordinate(1, 3)
+        rover1.direction shouldBe Direction.NORTH
+
+        rover2.coordinates shouldBe Coordinate(5, 1)
+        rover2.direction shouldBe Direction.EAST
     }
 }
