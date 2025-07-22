@@ -1,5 +1,6 @@
 package com.stringconcat.marsrover.domain.entity
 
+import com.stringconcat.marsrover.domain.error.RoversExplodedException
 import com.stringconcat.marsrover.domain.service.RoverNavigator
 
 class Plateau(val width: Int, val height: Int) {
@@ -9,6 +10,10 @@ class Plateau(val width: Int, val height: Int) {
     fun land(rover: Rover): RoverNavigator {
         this.rover?.let {
             occupiedArea.add(this.rover!!.coordinates)
+        }
+
+        if (occupiedArea.contains(rover.coordinates)) {
+            throw RoversExplodedException(rover.coordinates)
         }
 
         this.rover = rover
