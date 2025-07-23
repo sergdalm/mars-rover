@@ -3,6 +3,7 @@ package com.stringconcat.marsrover.domain.service
 import com.stringconcat.marsrover.domain.entity.Plateau
 import com.stringconcat.marsrover.domain.entity.Position
 import com.stringconcat.marsrover.domain.entity.Rover
+import com.stringconcat.marsrover.domain.error.RoverNotPresentException
 
 class RoverNavigator(private val plateau: Plateau) {
 

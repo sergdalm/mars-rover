@@ -2,6 +2,7 @@ package com.stringconcat.marsrover.domain.service
 
 import com.stringconcat.marsrover.domain.entity.*
 import com.stringconcat.marsrover.domain.error.LandingCollisionException
+import com.stringconcat.marsrover.domain.error.RoverNotPresentException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
