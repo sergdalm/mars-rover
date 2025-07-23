@@ -2,7 +2,7 @@ package com.stringconcat.marsrover.domain.service
 
 import com.stringconcat.marsrover.domain.entity.*
 import com.stringconcat.marsrover.domain.error.LandingCollisionException
-import com.stringconcat.marsrover.domain.error.RoverNotPresentException
+import com.stringconcat.marsrover.domain.error.NoRoverException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
@@ -119,7 +119,7 @@ internal class RoverNavigatorTest {
     fun `create rover navigator without rover - should throw exception`() {
         val plateau = Plateau(5, 5)
 
-        val exception = shouldThrow<RoverNotPresentException> {
+        val exception = shouldThrow<NoRoverException> {
             RoverNavigator(plateau)
         }
         exception.message should startWith(
@@ -138,10 +138,10 @@ internal class RoverNavigatorTest {
             plateau.land(rover2)
         }
 
-        val roverNotPresentException = shouldThrow<RoverNotPresentException> {
+        val noRoverException = shouldThrow<NoRoverException> {
             roverNavigator.getRoverCurrentPosition()
         }
-        roverNotPresentException.message should startWith(
+        noRoverException.message should startWith(
             "Rover is not present on the plateau"
         )
     }

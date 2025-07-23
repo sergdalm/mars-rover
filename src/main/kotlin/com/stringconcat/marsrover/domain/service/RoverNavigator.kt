@@ -3,13 +3,13 @@ package com.stringconcat.marsrover.domain.service
 import com.stringconcat.marsrover.domain.entity.Plateau
 import com.stringconcat.marsrover.domain.entity.Position
 import com.stringconcat.marsrover.domain.entity.Rover
-import com.stringconcat.marsrover.domain.error.RoverNotPresentException
+import com.stringconcat.marsrover.domain.error.NoRoverException
 
 class RoverNavigator(private val plateau: Plateau) {
 
     init {
         if (plateau.rover == null) {
-            throw RoverNotPresentException()
+            throw NoRoverException()
         }
     }
 
@@ -34,6 +34,6 @@ class RoverNavigator(private val plateau: Plateau) {
     }
 
     private fun getRover(): Rover {
-        return plateau.rover ?: throw RoverNotPresentException()
+        return plateau.rover ?: throw NoRoverException()
     }
 }
