@@ -1,25 +1,38 @@
 package com.stringconcat.marsrover.domain.service
 
 import com.stringconcat.marsrover.domain.entity.Plateau
+import com.stringconcat.marsrover.domain.entity.Position
+import com.stringconcat.marsrover.domain.entity.Rover
 
 class RoverNavigator(private val plateau: Plateau) {
 
-    fun moveRover() {
+    init {
+        if (plateau.rover == null) {
+            throw RoverNotPresentException()
+        }
+    }
 
-        val rover = plateau.rover
-        rover?.let {
-            val roverNextCoordinate = rover.peekNextCoordinate()
-            if (plateau.isInside(roverNextCoordinate) && !plateau.isAreaOccupied(roverNextCoordinate)) {
-                rover.move()
-            }
+    fun moveRover() {
+        val roverNextCoordinate = getRover().peekNextCoordinate()
+        if (plateau.isInside(roverNextCoordinate) && !plateau.isAreaOccupied(roverNextCoordinate)) {
+            getRover().move()
+
         }
     }
 
     fun turnRoverLeft() {
-        plateau.rover?.turnLeft()
+        getRover().turnLeft()
     }
 
     fun turnRoverRight() {
-        plateau.rover?.turnRight()
+        getRover().turnRight()
+    }
+
+    fun getRoverCurrentPosition(): Position {
+        return Position(getRover().coordinates, getRover().direction)
+    }
+
+    private fun getRover(): Rover {
+        return plateau.rover ?: throw RoverNotPresentException()
     }
 }

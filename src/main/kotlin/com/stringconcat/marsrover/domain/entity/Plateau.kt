@@ -35,6 +35,7 @@ class Plateau(val width: Int, val height: Int) {
             throw IllegalLandingException(rover.coordinates)
         }
         if (occupiedArea.contains(rover.coordinates)) {
+            this.rover = null
             throw LandingCollisionException(rover.coordinates)
         }
     }

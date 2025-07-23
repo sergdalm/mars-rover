@@ -1,9 +1,6 @@
 package com.stringconcat.marsrover.domain.service
 
-import com.stringconcat.marsrover.domain.entity.Coordinate
-import com.stringconcat.marsrover.domain.entity.Direction
-import com.stringconcat.marsrover.domain.entity.Plateau
-import com.stringconcat.marsrover.domain.entity.Rover
+import com.stringconcat.marsrover.domain.entity.*
 import com.stringconcat.marsrover.domain.error.LandingCollisionException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.should
@@ -98,6 +95,8 @@ internal class RoverNavigatorTest {
         rover1Navigator.moveRover()
         rover1Navigator.moveRover()
 
+        rover1Navigator.getRoverCurrentPosition() shouldBe Position(Coordinate(1, 3), Direction.NORTH)
+
         val rover2 = Rover(Coordinate(x = 3, y = 3), Direction.EAST)
         val rover2Navigator = plateau.land(rover2)
 
@@ -112,10 +111,37 @@ internal class RoverNavigatorTest {
         rover2Navigator.turnRoverRight()
         rover2Navigator.moveRover()
 
-        rover1.coordinates shouldBe Coordinate(1, 3)
-        rover1.direction shouldBe Direction.NORTH
+        rover2Navigator.getRoverCurrentPosition() shouldBe Position(Coordinate(5, 1), Direction.EAST)
+    }
 
-        rover2.coordinates shouldBe Coordinate(5, 1)
-        rover2.direction shouldBe Direction.EAST
+    @Test
+    fun `create rover navigator without rover - should throw exception`() {
+        val plateau = Plateau(5, 5)
+
+        val exception = shouldThrow<RoverNotPresentException> {
+            RoverNavigator(plateau)
+        }
+        exception.message should startWith(
+            "Rover is not present on the plateau"
+        )
+    }
+
+    @Test
+    fun `two rovers explode on plato - try to get rover position - should throw exception`() {
+        val plateau = Plateau(5, 5)
+        val rover1 = Rover(Coordinate(x = 0, y = 0), Direction.NORTH)
+        val roverNavigator = plateau.land(rover1)
+        val rover2 = Rover(Coordinate(x = 0, y = 0), Direction.WEST)
+
+        shouldThrow<LandingCollisionException> {
+            plateau.land(rover2)
+        }
+
+        val roverNotPresentException = shouldThrow<RoverNotPresentException> {
+            roverNavigator.getRoverCurrentPosition()
+        }
+        roverNotPresentException.message should startWith(
+            "Rover is not present on the plateau"
+        )
     }
 }
