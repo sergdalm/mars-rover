@@ -1,6 +1,6 @@
 package com.stringconcat.marsrover.domain.usecase
 
-import com.stringconcat.marsrover.adapter.InMemoryPlateauStorage
+import com.stringconcat.marsrover.adapter.out.InMemoryPlateauStorage
 import com.stringconcat.marsrover.domain.entity.Plateau
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe

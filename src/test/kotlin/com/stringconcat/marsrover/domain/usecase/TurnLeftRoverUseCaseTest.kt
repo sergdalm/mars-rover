@@ -1,6 +1,6 @@
 package com.stringconcat.marsrover.domain.usecase
 
-import com.stringconcat.marsrover.adapter.InMemoryPlateauStorage
+import com.stringconcat.marsrover.adapter.out.InMemoryPlateauStorage
 import com.stringconcat.marsrover.domain.entity.Coordinate
 import com.stringconcat.marsrover.domain.entity.Direction
 import com.stringconcat.marsrover.domain.entity.Plateau
